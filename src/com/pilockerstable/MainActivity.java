@@ -78,7 +78,7 @@ public class MainActivity extends Activity {
 			public void onClick(View arg0) {
 				
 				AlertDialog.Builder alert = new AlertDialog.Builder(context);
-				alert.setTitle("Enter New Password");
+				alert.setTitle("Enter SecureMi PassCode");
 				final EditText input1 = new EditText(context);
 				alert.setView(input1);
 				alert.setPositiveButton("Confirm",
@@ -90,23 +90,20 @@ public class MainActivity extends Activity {
 								String p = input1.getEditableText().toString();
 								
 							if (p.trim().length() < 4 || p.trim().length() % 2 != 0){
-								Toast.makeText(context, "Password Must be atleast 4 Characters and even, try again", Toast.LENGTH_SHORT).show();								
+								Toast.makeText(context, "PassCode Must be atleast 4 Characters and even, try again", Toast.LENGTH_SHORT).show();								
 								
 							}else if (p.trim().length() >= 4 && p.trim().length() <= 12 && p.trim().length() % 2 == 0){
 								
 								
                                 save("pass", p);
                                 save("pin", "");
-                                Toast.makeText(context, "Password Updated", Toast.LENGTH_SHORT).show();;
+                                Toast.makeText(context, "SecureMi Updated", Toast.LENGTH_SHORT).show();;
                                 Toast.makeText(context, "Your Safe Password is: " + p.substring(0, p.length()/2), Toast.LENGTH_LONG).show();
 							}else if (p.trim().length() > 12 ){
 								
-                                Toast.makeText(context, "The password must be less than 12 characters and even", Toast.LENGTH_SHORT).show();;
-                               
-
-								
+                                Toast.makeText(context, "The passCode must be less than 12 characters and even", Toast.LENGTH_SHORT).show();;
+                          
 							}
-							
 							
 							
 							}
@@ -189,41 +186,6 @@ public class MainActivity extends Activity {
 		});   
         
         
-
-            button2.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				
-				new AlertDialog.Builder(MainActivity.this)
-           	    .setTitle("Reset Pin/Password")
-           	    .setMessage("Are you sure you want to reset security pin/password? \nthis will leave your phone UNSECURED")
-           	    .setPositiveButton("Reset", new DialogInterface.OnClickListener() {
-           	        public void onClick(DialogInterface dialog, int which) { 
-           	        	
-
-           	         save("pin", ""); 
-           	         save("pass", "");
-           	         
-           	         }
-           	     })
-           	     .setNegativeButton("NO", new DialogInterface.OnClickListener() {
-           	        public void onClick(DialogInterface dialog, int which) { 
-           	        	
-
-    					
-                  }
-           	     })
-           	    .setIcon(R.drawable.ic_launcher)
-           	     .show();
-						
-			}
-		});   
-        
-          
-        
-        
-        
-
             button2.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
