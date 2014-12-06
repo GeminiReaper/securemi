@@ -54,6 +54,8 @@ public class PinActivity extends Activity {
 		String XYZ = sec.getString("XYZ", "");
 		final String pass = sec.getString("pass", "");
 		final String pin = sec.getString("pin", "");
+	
+	
 		loadlock();
 		
 		if (XYZ.equals("true")) {
@@ -74,10 +76,11 @@ public class PinActivity extends Activity {
 			
 		}
 		
-		else if (!pin.equals("")){
+		else if(!pin.equals("")){
 			setContentView(R.layout.pin);
 			unlock = (EditText) findViewById(R.id.pin);
 			}
+	
 		
 		
 		button1 = (Button)findViewById(R.id.button1);
@@ -125,8 +128,18 @@ public class PinActivity extends Activity {
 			String Browser = sec.getString("browser", "");	
 			String camera = sec.getString("camera", "");
 				if(X==1){
+					if(unlocker.equals(pass.substring(0, pass.length()/2)))
+					{
+						if(unlocker.equals(pass.substring(0, pass.length()/2)))
+						{
+							startActivity(new Intent(PinActivity.this, TestActivity.class));
+							
+						}
+						
+					}
 					
-					if(unlocker.equals(pass)){
+					
+					else if(unlocker.equals(pass)){
 						
 					 if(unlocker.equals(pass)){
 						 finish();
@@ -163,8 +176,18 @@ public class PinActivity extends Activity {
 					
 					 unlocker = unlock.getText().toString();
 					 
-					 if(unlocker.equals(pin)){
+					 if(unlocker.equals(pin.substring(0, pin.length()/2)))
+						{
+							if(unlocker.equals(pin.substring(0, pin.length()/2)))
+							{
+								startActivity(new Intent(PinActivity.this, TestActivity.class));
+								
+							}
 							
+						}
+					 
+					 
+					 else if(unlocker.equals(pin)){
 							
 						 if(unlocker.equals(pin)){
 							 finish();
@@ -201,7 +224,6 @@ public class PinActivity extends Activity {
 			
 			}
 		});
-
 
 		
 		
@@ -315,6 +337,8 @@ public class PinActivity extends Activity {
 		colorbg = Servicelock.spf.getString("colorbg", "");
 
 	}
+	
+	
 	
 	@Override
 	public void onDestroy() {

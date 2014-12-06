@@ -280,3 +280,58 @@
     </ScrollView>
 
 </RelativeLayout>
+
+
+
+            <!--  <TextView
+                android:id="@+id/preview"
+                android:layout_width="743325dp"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/set"
+                android:background="#ffffff"
+                android:gravity="center"
+                android:text=" test"
+                android:textColor="#000000"
+                android:textSize="17dp"
+                android:textStyle="bold" />-->
+            
+            <!--<TextView
+                android:id="@+id/preview2"
+                android:layout_width="743325dp"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/preview"
+                android:background="#ffffff"
+                android:gravity="center"
+                android:text=" test"
+                android:textColor="#000000"
+                android:textSize="17dp"
+                android:textStyle="bold" />	-->
+
+           
+            <!--<Button
+                android:id="@+id/setDangerPass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/button1"
+                android:background="#F0F0F0"
+                android:gravity="center_vertical"
+                android:text="   Set Danger password"
+                android:textColor="#000000" />
+            
+            <Button
+                android:id="@+id/setDangerPin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/setDangerPass"
+                android:background="#F0F0F0"
+                android:gravity="center_vertical"
+                android:text="   Set Danger PIN"
+                android:textColor="#000000" />-->
+
+         

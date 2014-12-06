@@ -6,8 +6,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_lock">Lock</string>
     <string name="title_activity_help">Help</string>
-    <string name="about">
-Pi Locker is a simple and fast locksreen replacement with Customizability and Smart Gestures.
+    <string name="about">Pi Locker is a simple and fast locksreen replacement with Customizability and Smart Gestures.
 \n\n
 Features :
 \n
@@ -39,8 +38,9 @@ v3.0
 \n-increased default background transperancy
 \n-Code Cleaned
 \n-Removed unused recources
-\n-added text limiter in password
-</string>
+\n-added text limiter in password</string>
     <string name="title_activity_pin">MainActivity</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="Custom_Launcher">Clauncher</string>
 
 </resources>

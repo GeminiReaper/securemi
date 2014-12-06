@@ -3,7 +3,9 @@ package com.pilockerstable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.lang.Object;
 
+import android.support.v4.view.GestureDetectorCompat;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
@@ -34,7 +36,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
-import android.support.v4.view.GestureDetectorCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;

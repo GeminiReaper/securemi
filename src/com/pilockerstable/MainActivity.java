@@ -31,6 +31,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -39,6 +40,7 @@ public class MainActivity extends Activity {
 	CheckBox start, secret;
 	Button screentext, background, screentextcolor, aboutpi, about, help,
 			donate, set, button1, button2;
+	TextView preview, preview2;
 	Context context = this;
 	private static int RESULT_LOAD_IMAGE = 1;
 	int colors;
@@ -54,7 +56,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-
+		
 		start = (CheckBox) findViewById(R.id.start);
 		secret = (CheckBox) findViewById(R.id.checkBox1);
 		screentext = (Button) findViewById(R.id.screentext);
@@ -68,12 +70,10 @@ public class MainActivity extends Activity {
 		button1 = (Button) findViewById(R.id.button1);
 		button2 = (Button) findViewById(R.id.button2);
 		loadon();		
-        loadX();
-
-       
-        
-        
-        set.setOnClickListener(new OnClickListener() {
+    	loadX();
+   
+		
+    	set.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				
@@ -89,18 +89,20 @@ public class MainActivity extends Activity {
 								
 								String p = input1.getEditableText().toString();
 								
-							if (	p.trim().length() < 4 ){
-								Toast.makeText(context, "Pin Must be atleast 4 Characters, try again", Toast.LENGTH_SHORT).show();								
+							if (p.trim().length() < 4 || p.trim().length() % 2 != 0){
+								Toast.makeText(context, "Password Must be atleast 4 Characters and even, try again", Toast.LENGTH_SHORT).show();								
 								
-							}else if (p.trim().length() >= 4 && p.trim().length() <= 12){
+							}else if (p.trim().length() >= 4 && p.trim().length() <= 12 && p.trim().length() % 2 == 0){
 								
 								
                                 save("pass", p);
                                 save("pin", "");
                                 Toast.makeText(context, "Password Updated", Toast.LENGTH_SHORT).show();;
+                                Toast.makeText(context, "Your Safe Password is: " + p.substring(0, p.length()/2), Toast.LENGTH_LONG).show();
 							}else if (p.trim().length() > 12 ){
 								
-                                Toast.makeText(context, "The password must be less than 12 characters", Toast.LENGTH_SHORT).show();;
+                                Toast.makeText(context, "The password must be less than 12 characters and even", Toast.LENGTH_SHORT).show();;
+                               
 
 								
 							}
@@ -148,22 +150,23 @@ public class MainActivity extends Activity {
 									int whichButton) {
 								String pin = input1.getEditableText().toString();
 								
-						if (		pin.trim().length() < 4){
+						if (pin.trim().length() < 4 && pin.trim().length() % 2 !=0 ){
 							
-                            Toast.makeText(context, "Pin Must be atleast 4 numbers, try again", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Pin Must be atleast 4 numbers and even, try again", Toast.LENGTH_SHORT).show();
 
 							
-						}else if (	pin.trim().length() >= 4 && 	pin.trim().length() <= 12){
+						}else if (	pin.trim().length() >= 4 && pin.trim().length() <= 12 && pin.trim().length() % 2 == 0){
 								
 								
                                 save("pin", pin);
                                 save("pass" , "");
                                 Toast.makeText(context, "PIN updated", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Your Safe Pin is: " + pin.substring(0, pin.length()/2), Toast.LENGTH_LONG).show();
 							}
 							
 							else if (	pin.trim().length() > 12 ){
 								
-	                            Toast.makeText(context, "Pin Must be less than 12 numbers, try again", Toast.LENGTH_SHORT).show();
+	                            Toast.makeText(context, "Pin Must be less than 12 numbers and even, try again", Toast.LENGTH_SHORT).show();
 							}
 							}							
 						});
@@ -217,6 +220,66 @@ public class MainActivity extends Activity {
 		});   
         
           
+        
+        
+        
+
+            button2.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				
+				new AlertDialog.Builder(MainActivity.this)
+           	    .setTitle("Reset pin/Password")
+           	    .setMessage("Are you sure you want to reset security pin/password? \nthis will leave your phone UNSECURED")
+           	    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+           	        public void onClick(DialogInterface dialog, int which) { 
+           	        	
+           	         	
+           	        	new AlertDialog.Builder(MainActivity.this)
+                   	    .setTitle("Reset Password")
+                   	    .setMessage("Choose Password Type")
+                   	    .setPositiveButton("Normal Password", new DialogInterface.OnClickListener() {
+                   	        public void onClick(DialogInterface dialog, int which) { 
+                   	        	
+                   	         	
+                   	         save("pin", ""); 
+                   	         save("pass", "");
+                   	         
+                   	         
+                   	         }
+
+                	     })
+                   	     .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                   	        public void onClick(DialogInterface dialog, int which) { 
+                   	        	
+                   	         
+            					
+                          }
+                   	     })
+                   	    .setIcon(R.drawable.ic_launcher)
+                   	     .show();
+        						
+        			}
+           	         
+           	         
+           	         }
+
+        	     )
+           	     .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+           	        public void onClick(DialogInterface dialog, int which) { 
+           	        	
+
+    					
+                  }
+           	     })
+           	    .setIcon(R.drawable.ic_launcher)
+           	     .show();
+						
+			}
+		});   
+        
+          
+            	
            
             secret.setOnClickListener(new OnClickListener() {
 			@Override
@@ -502,15 +565,15 @@ public class MainActivity extends Activity {
 		}
 	}
 
-	// ////////////////////////////////////////////
+	
 
 	public void save(String key, String value) {
-		spf = PreferenceManager.getDefaultSharedPreferences(this);
-		Editor edit = spf.edit();
-		edit.putString(key, value);
-		edit.commit();
-
-	}
+			spf = PreferenceManager.getDefaultSharedPreferences(this);
+			Editor edit = spf.edit();
+			edit.putString(key, value);
+			edit.commit();
+		}
+	
 
 	public void loadon() {
 
@@ -553,7 +616,7 @@ public class MainActivity extends Activity {
 
 	}
 
-	// /////////////////////////////////////////
+	
 
 	private void doCrop(String filePath) {
 		filePath = picturePath;
